@@ -20,13 +20,13 @@ const SavedSearches = (props) => {
         getFlight(e.target.id);       
     }   
 
-    useEffect((props) => {
-        props.model.fetchSavedFlightArray();
-        props.model.addObserver(update);
-        return function cleanup() {
-            props.model.removeObserver(props);
-        };
-    }, []);
+    // useEffect((props) => {
+    //     props.model.fetchSavedFlightArray();
+    //     props.model.addObserver(update);
+    //     return function cleanup() {
+    //         props.model.removeObserver(props);
+    //     };
+    // }, []);
 
     function update(changes) {
         if (changes.action === "fetchSavedFlightObj"){

@@ -10,6 +10,7 @@ import SearchFlights from './components/SearchFlights';
 import modelInstance from "./data/Model"
 import SavedSearches from './components/SavedSearches';
 import PurchaseView from "./components/PurchaseView";
+import Home from './components/Home';
 
 class App extends Component {
   
@@ -28,7 +29,7 @@ class App extends Component {
         <h1 className="header">{this.state.title}</h1>
      
           {/* We rended diffrent component based on the path */}
-          <Route exact path="/" component={Welcome}  />
+          <Route exact path="/" component={Home}  />
           <Route exact path="/search" render={() => <SearchFlights model={modelInstance}/>} />
           <Route exact path="/flights" render={() => <Flights model= {modelInstance}/>}/>
           <Route exact path="/savedSearches" render={() => <SavedSearches model={modelInstance}/>} />
