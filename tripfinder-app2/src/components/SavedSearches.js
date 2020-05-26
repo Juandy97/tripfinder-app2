@@ -10,7 +10,7 @@ const SavedSearches = (props) => {
     }
 
     function getFlight(id) {
-        let selectedFlight = savedFligthsArray.filter(flight => id == flight.key);
+        let selectedFlight = savedFligthsArray.filter(flight => id === flight.key);
         if(selectedFlight !== []){
             props.model.setSelectedFlight(selectedFlight);
         }
@@ -20,7 +20,7 @@ const SavedSearches = (props) => {
         getFlight(e.target.id);       
     }   
 
-    useEffect(() => {
+    useEffect((props) => {
         props.model.fetchSavedFlightArray();
         props.model.addObserver(update);
         return function cleanup() {
@@ -29,10 +29,10 @@ const SavedSearches = (props) => {
     }, []);
 
     function update(changes) {
-        if (changes.action == "fetchSavedFlightObj"){
+        if (changes.action === "fetchSavedFlightObj"){
             setSavedFlightsArray(changes.value);            
         }
-        if (changes.action == "setSelectedFlight"){
+        if (changes.action === "setSelectedFlight"){
             setBoughtFlight(changes.value);          
         }
     }
@@ -61,7 +61,7 @@ const SavedSearches = (props) => {
             )
       );
 
-    if(savedFligthsArray.length == 0) {
+    if(savedFligthsArray.length === 0) {
         return(
             <div>
             <Link to="/search">

@@ -69,7 +69,7 @@ const ListPlaces = (props) => {
    
     return(
         <div>
-            <p>
+            <div>
             From <input placeholder="Enter departure city or country" 
                     type="text"
                     value={inputDepValue}
@@ -85,7 +85,7 @@ const ListPlaces = (props) => {
                    >
                 </input>
                 {airportArrivalVisible ? <Airport places={arrivalDestinations} changePlace={changeArrivalPlace}></Airport> : null }
-            </p>           
+            </div>           
         </div>
     );
 }

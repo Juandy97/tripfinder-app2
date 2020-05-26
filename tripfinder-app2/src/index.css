@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-.home{
+.start {
   display: flex;
   flex-direction: column;
   align-content: center;

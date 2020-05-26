@@ -5,7 +5,7 @@ import "../index.css";
 class Welcome extends Component {
   render() {
     return (
-      <div className="home">
+      <div className="start">
         <p className="welcome-text"><i>Need a vacation?</i> <b> We've got your back!</b></p>
        
         <Link to="/search">
