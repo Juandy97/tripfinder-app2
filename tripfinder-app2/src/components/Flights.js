@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import FlightsFormat from "./FlightsFormat"
 
  const Flights = (props) => {
+
+    console.log(props)
     
     function getFlight(id) {
         let selectedFlight = flightInfo.filter(flight => id === flight.id);
@@ -31,51 +34,18 @@ import { Link } from "react-router-dom";
             inboundCarrier: props.carriers.find(carrier => carrier["CarrierId"] === flight["InboundLeg"]["CarrierIds"][0]),
             currency: props.currencies[0],
             id: index
-    }));    
-
-    let flights = flightInfo.map(function (flight, index) {
-            return  (       
-              <div key={index}>
-                  <div>
-                   <p> <strong>From: </strong>{flight.source["Name"]} - {flight.source["IataCode"]}</p>
-                   <p>{flight.departureDate}</p>
-                   <p>{flight.outboundCarrier["Name"]}</p>
-                </div>
-                <div>
-                   <p><strong>To: </strong> {flight.destination["Name"]} - {flight.destination["IataCode"]}</p>
-                   <p>{flight.returnDate}</p>
-                   <p>{flight.inboundCarrier["Name"]}</p>
-                 </div>
-                 <div>
-                    <p><strong>Price per person:</strong> {flight.price} {flight.currency["Code"]}</p>
-                    <button className="button" id={flight.id} onClick={saveFlight}> Save</button> 
-                    <Link to ="/purchase">           
-                    <button className="button" id={flight.id} onClick={chooseFlight}> Buy</button>  
-                    </Link>      
-                 </div>
-               </div>
-            )
-        });
+    }));
 
     if(flightInfo.length > 0) {
         return(
-            <div>
-                {flights}
-            </div>
+            <FlightsFormat info = {flightInfo} />
         );
     }
     else{
         return (
             <div>
-            <div>
                 <h3><em>No flights available</em></h3>
-                <p> <strong>From: </strong>{props.model.departurePlace["PlaceName"]} - {props.model.departurePlace["PlaceId"]}</p>
-                <p>{props.model.departureDate}</p>
-            </div>
-            <div>
-                <p><strong>To: </strong> {props.model.arrivalPlace["PlaceName"]} - {props.model.arrivalPlace["PlaceId"]}</p>
-               <p>{props.model.returnDate}</p>
-            </div>
+                <FlightsFormat model = {props.model} />
             </div>
         )    
     }
